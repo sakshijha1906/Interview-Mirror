@@ -1,6 +1,36 @@
+import { useState } from 'react';
 import './App.css';
+import DomainSelector from './DomainSelector';
 
 function App() {
+  const [page, setPage] = useState('home');
+  const [selectedDomain, setSelectedDomain] = useState('');
+
+  const handleDomainSelect = (domain) => {
+    setSelectedDomain(domain);
+    setPage('interview');
+  };
+
+  if (page === 'domain') {
+    return <DomainSelector onSelect={handleDomainSelect} />;
+  }
+
+  if (page === 'interview') {
+    return (
+      <div style={{
+        background: '#0a0a0a',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'white',
+        fontSize: '24px'
+      }}>
+        Domain Selected: {selectedDomain} — Interview page coming soon!
+      </div>
+    );
+  }
+
   return (
     <div className="app">
       <nav className="navbar">
@@ -13,7 +43,9 @@ function App() {
           AI-powered mock interviews tailored to your domain and projects.
           Get real feedback, not just random questions.
         </p>
-        <button className="start-btn">Start Interview →</button>
+        <button className="start-btn" onClick={() => setPage('domain')}>
+          Start Interview →
+        </button>
       </div>
 
       <div className="features">
