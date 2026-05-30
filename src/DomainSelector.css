@@ -1,15 +1,48 @@
 .domain-page {
   min-height: 100vh;
   background: #080808;
-  padding: 60px 48px;
+  padding: 0;
 }
 
+/* NAVBAR */
+.domain-navbar {
+  padding: 24px 48px;
+  border-bottom: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.back-btn {
+  background: transparent;
+  color: #444;
+  border: none;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: color 0.3s;
+  text-transform: uppercase;
+}
+
+.back-btn:hover {
+  color: #00ff88;
+}
+
+.domain-nav-tag {
+  font-size: 12px;
+  color: #333;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+/* HEADER */
 .domain-header {
-  margin-bottom: 60px;
+  padding: 60px 48px 40px 48px;
 }
 
 .domain-header h1 {
-  font-size: 36px;
+  font-size: 42px;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -1px;
@@ -19,52 +52,107 @@
 
 .domain-header h1 span {
   color: #00ff88;
+  text-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
 }
 
 .domain-header p {
   font-size: 14px;
-  color: #666;
+  color: #555;
   font-family: 'Segoe UI', sans-serif;
   letter-spacing: 1px;
 }
 
+.terminal-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.terminal-prompt {
+  color: #00ff88;
+  font-size: 14px;
+}
+
+.terminal-text {
+  color: #333;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+/* GRID */
 .domain-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: #1a1a1a;
-  border: 1px solid #1a1a1a;
-  max-width: 1000px;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
 }
 
+/* CARD */
 .domain-card {
   background: #080808;
-  padding: 40px 32px;
+  padding: 40px 36px;
   cursor: pointer;
   transition: background 0.3s;
-  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.domain-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: #00ff88;
+  transition: width 0.4s;
+}
+
+.domain-card:hover::after {
+  width: 100%;
 }
 
 .domain-card:hover {
-  background: #0f0f0f;
+  background: #0a0a0a;
 }
 
 .domain-card:hover h3 {
   color: #00ff88;
 }
 
-.domain-icon {
-  font-size: 28px;
-  margin-bottom: 16px;
+.domain-card:hover .domain-arrow {
+  color: #00ff88;
+  transform: translateX(6px);
+}
+
+/* SELECTED STATE */
+.domain-card.selected {
+  background: #0a0a0a;
+  border-left: 2px solid #00ff88;
+}
+
+.domain-card.selected h3 {
+  color: #00ff88;
+}
+
+.domain-tag {
   display: block;
+  font-size: 11px;
+  color: #333;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  font-family: 'Courier New', monospace;
 }
 
 .domain-card h3 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 10px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   font-family: 'Courier New', monospace;
   transition: color 0.3s;
@@ -72,7 +160,15 @@
 
 .domain-card p {
   font-size: 13px;
-  color: #666;
+  color: #555;
   line-height: 1.7;
   font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 24px;
+}
+
+.domain-arrow {
+  font-size: 18px;
+  color: #333;
+  transition: all 0.3s;
+  display: block;
 }

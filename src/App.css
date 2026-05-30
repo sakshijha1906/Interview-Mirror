@@ -8,6 +8,37 @@
 body {
   background: #080808;
   color: #e0e0e0;
+  overflow-x: hidden;
+}
+
+/* PAGE TRANSITIONS */
+.page-enter {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.page-exit {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-16px); }
+}
+
+/* PARTICLES */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* NAVBAR */
@@ -16,6 +47,9 @@ body {
   border-bottom: 1px solid #1a1a1a;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
 
 .logo {
@@ -26,11 +60,47 @@ body {
   text-transform: uppercase;
 }
 
+.nav-tag {
+  font-size: 12px;
+  color: #333;
+  letter-spacing: 2px;
+}
+
+/* TERMINAL LINE */
+.terminal-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.terminal-prompt {
+  color: #00ff88;
+  font-size: 14px;
+}
+
+.terminal-text {
+  color: #444;
+  font-size: 13px;
+  letter-spacing: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(40) infinite;
+}
+
+@keyframes typing {
+  0%   { width: 0; }
+  50%  { width: 100%; }
+  100% { width: 100%; }
+}
+
 /* HERO */
 .hero {
   text-align: left;
-  padding: 120px 48px 80px 48px;
+  padding: 100px 48px 80px 48px;
   max-width: 800px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-title {
@@ -44,39 +114,52 @@ body {
 
 .hero-title span {
   color: #00ff88;
+  text-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
 }
 
 .hero-subtitle {
-  font-size: 16px;
-  color: #888;
+  font-size: 15px;
+  color: #666;
   max-width: 500px;
   line-height: 1.8;
   margin-bottom: 48px;
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* TERMINAL BUTTON */
+/* BUTTON */
 .start-btn {
   background: transparent;
   color: #00ff88;
   border: 1px solid #00ff88;
   padding: 14px 32px;
-  font-size: 14px;
+  font-size: 13px;
   font-family: 'Courier New', monospace;
   cursor: pointer;
   letter-spacing: 3px;
   text-transform: uppercase;
   transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
 }
 
 .start-btn::before {
-  content: '> ';
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 255, 136, 0.1);
+  transition: left 0.3s;
+}
+
+.start-btn:hover::before {
+  left: 0;
 }
 
 .start-btn:hover {
-  background: #00ff88;
-  color: #080808;
   box-shadow: 0 0 24px rgba(0, 255, 136, 0.3);
+  color: #00ff88;
 }
 
 /* FEATURES */
@@ -86,32 +169,63 @@ body {
   gap: 1px;
   background: #1a1a1a;
   border-top: 1px solid #1a1a1a;
-  border-bottom: 1px solid #1a1a1a;
   margin-top: 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .feature-card {
   background: #080808;
   padding: 40px 32px;
   transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: #00ff88;
+  transition: width 0.4s;
+}
+
+.feature-card:hover::after {
+  width: 100%;
 }
 
 .feature-card:hover {
-  background: #0f0f0f;
+  background: #0a0a0a;
 }
 
 .feature-card h3 {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   color: #00ff88;
   margin-bottom: 12px;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
 .feature-card p {
-  color: #666;
+  color: #555;
   line-height: 1.7;
-  font-size: 14px;
+  font-size: 13px;
   font-family: 'Segoe UI', sans-serif;
+}
+
+/* GLOW EFFECT */
+.glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,255,136,0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  top: -200px;
+  right: -200px;
 }
