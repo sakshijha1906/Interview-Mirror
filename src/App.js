@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import DomainSelector from './DomainSelector';
 import ProjectInput from './ProjectInput';
+import InterviewEngine from './InterviewEngine';
 
 function App() {
   const [page, setPage] = useState('home');
@@ -49,21 +50,12 @@ function App() {
 
   if (page === 'interview') {
     return (
-      <div className={transitioning ? 'page-exit' : 'page-enter'} style={{
-        background: '#080808',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'white',
-        fontFamily: 'Courier New',
-        flexDirection: 'column',
-        gap: '24px'
-      }}>
-        <span style={{ color: '#00ff88' }}>{'>'} Domain: {selectedDomain}</span>
-        <span style={{ color: '#00ff88' }}>{'>'} Project: {projectData?.projectName}</span>
-        <span style={{ color: '#666', fontSize: '16px' }}>Interview engine coming soon...</span>
-        <button className="start-btn" onClick={() => navigateTo('project')}>{'<'} Go Back</button>
+      <div className={transitioning ? 'page-exit' : 'page-enter'}>
+        <InterviewEngine
+          domain={selectedDomain}
+          projectData={projectData}
+          onBack={() => navigateTo('project')}
+        />
       </div>
     );
   }
@@ -86,7 +78,7 @@ function App() {
           <span>Interview</span>
         </h1>
         <p className="hero-subtitle">
-          AI-powered mock interviews tailored to your domain and projects.
+          AI-powered mock interviews  for your domain and projects.
           Get real feedback, not just random questions.
         </p>
         <button className="start-btn" onClick={() => navigateTo('domain')}>

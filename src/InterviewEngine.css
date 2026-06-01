@@ -1,0 +1,282 @@
+.interview-page {
+  min-height: 100vh;
+  background: #080808;
+  display: flex;
+  flex-direction: column;
+}
+
+/* NAVBAR */
+.interview-navbar {
+  padding: 20px 48px;
+  border-bottom: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.interview-nav-tag {
+  font-size: 12px;
+  color: #333;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+/* ROUND INDICATOR */
+.round-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.round-active {
+  color: #00ff88;
+  text-transform: uppercase;
+}
+
+.round-done {
+  color: #333;
+  text-decoration: line-through;
+  text-transform: uppercase;
+}
+
+.round-pending {
+  color: #333;
+  text-transform: uppercase;
+}
+
+.round-divider {
+  color: #222;
+}
+
+/* INTERVIEW BODY */
+.interview-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 48px;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* START SCREEN */
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 60px;
+}
+
+.start-screen h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -1px;
+}
+
+.start-screen p {
+  font-size: 14px;
+  color: #555;
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 1px;
+}
+
+.start-screen p span {
+  color: #00ff88;
+  font-family: 'Courier New', monospace;
+}
+
+.start-interview-btn {
+  background: transparent;
+  color: #00ff88;
+  border: 1px solid #00ff88;
+  padding: 14px 32px;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  width: fit-content;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.start-interview-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 255, 136, 0.1);
+  transition: left 0.3s;
+}
+
+.start-interview-btn:hover::before {
+  left: 0;
+}
+
+.start-interview-btn:hover {
+  box-shadow: 0 0 24px rgba(0, 255, 136, 0.3);
+}
+
+/* CHAT */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+}
+
+.message.interviewer .message-label {
+  color: #00ff88;
+}
+
+.message.user .message-label {
+  color: #555;
+}
+
+.message.interviewer p {
+  color: #e0e0e0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  border-left: 2px solid #00ff88;
+  padding-left: 16px;
+}
+
+.message.user p {
+  color: #666;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  border-left: 2px solid #333;
+  padding-left: 16px;
+}
+
+.typing {
+  color: #00ff88 !important;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* INPUT AREA */
+.input-area {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  border-top: 1px solid #1a1a1a;
+  padding-top: 24px;
+}
+
+.input-area textarea {
+  flex: 1;
+  background: #0d0d0d;
+  border: 1px solid #1a1a1a;
+  color: #e0e0e0;
+  font-size: 14px;
+  padding: 16px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  resize: none;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-area textarea:focus {
+  border-color: #00ff88;
+}
+
+.input-area textarea::placeholder {
+  color: #333;
+}
+
+.send-btn {
+  background: transparent;
+  color: #00ff88;
+  border: 1px solid #00ff88;
+  padding: 16px 24px;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.send-btn:hover {
+  background: rgba(0, 255, 136, 0.1);
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.2);
+}
+
+.send-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  background: transparent;
+  color: #444;
+  border: none;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: color 0.3s;
+  text-transform: uppercase;
+}
+
+.back-btn:hover {
+  color: #00ff88;
+}
+
+/* TERMINAL LINE */
+.terminal-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.terminal-prompt {
+  color: #00ff88;
+  font-size: 14px;
+}
+
+.terminal-text {
+  color: #333;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
