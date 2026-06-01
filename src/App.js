@@ -3,11 +3,13 @@ import './App.css';
 import DomainSelector from './DomainSelector';
 import ProjectInput from './ProjectInput';
 import InterviewEngine from './InterviewEngine';
+import FeedbackPage from './FeedbackPage';
 
 function App() {
   const [page, setPage] = useState('home');
   const [selectedDomain, setSelectedDomain] = useState('');
   const [projectData, setProjectData] = useState(null);
+  const [interviewMessages, setInterviewMessages] = useState([]);
   const [transitioning, setTransitioning] = useState(false);
 
   const navigateTo = (target) => {
@@ -26,6 +28,18 @@ function App() {
   const handleProjectSubmit = (data) => {
     setProjectData(data);
     navigateTo('interview');
+  };
+
+  const handleInterviewComplete = (messages) => {
+    setInterviewMessages(messages);
+    navigateTo('feedback');
+  };
+
+  const handleRestart = () => {
+    setSelectedDomain('');
+    setProjectData(null);
+    setInterviewMessages([]);
+    navigateTo('home');
   };
 
   if (page === 'domain') {
@@ -54,7 +68,21 @@ function App() {
         <InterviewEngine
           domain={selectedDomain}
           projectData={projectData}
+          onComplete={handleInterviewComplete}
           onBack={() => navigateTo('project')}
+        />
+      </div>
+    );
+  }
+
+  if (page === 'feedback') {
+    return (
+      <div className={transitioning ? 'page-exit' : 'page-enter'}>
+        <FeedbackPage
+          messages={interviewMessages}
+          domain={selectedDomain}
+          projectData={projectData}
+          onRestart={handleRestart}
         />
       </div>
     );
@@ -78,7 +106,7 @@ function App() {
           <span>Interview</span>
         </h1>
         <p className="hero-subtitle">
-          AI-powered mock interviews  for your domain and projects.
+          AI-powered mock interviews tailored to your domain and projects.
           Get real feedback, not just random questions.
         </p>
         <button className="start-btn" onClick={() => navigateTo('domain')}>

@@ -1,15 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './InterviewEngine.css';
 
 const GROQ_API_KEY = process.env.REACT_APP_GROQ_API_KEY;
-console.log('API KEY:', GROQ_API_KEY);
 
-function InterviewEngine({ domain, projectData, onBack }) {
+function InterviewEngine({ domain, projectData, onBack, onComplete }) {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [round, setRound] = useState('hr');
-  const [questionCount, setQuestionCount] = useState(0);
   const [interviewStarted, setInterviewStarted] = useState(false);
 
   const roundLabels = {
@@ -65,9 +63,10 @@ Rules:
       });
 
       const data = await response.json();
+      console.log('API Response:', data);
       const aiMessage = data.choices[0].message.content;
-
       setMessages([{ role: 'interviewer', content: aiMessage }]);
+
     } catch (error) {
       console.error('Error:', error);
     }
@@ -81,7 +80,6 @@ Rules:
     setMessages(newMessages);
     setUserInput('');
     setLoading(true);
-    setQuestionCount(prev => prev + 1);
 
     const systemPrompt = getSystemPrompt();
 
@@ -101,7 +99,7 @@ Rules:
           'Authorization': `Bearer ${GROQ_API_KEY}`
         },
         body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
+          model: 'llama-3.3-70b-versatile',
           messages: apiMessages,
           max_tokens: 300,
           temperature: 0.7
@@ -109,6 +107,7 @@ Rules:
       });
 
       const data = await response.json();
+      console.log('API Response:', data);
       const aiMessage = data.choices[0].message.content;
 
       setMessages(prev => [...prev, { role: 'interviewer', content: aiMessage }]);
@@ -116,7 +115,6 @@ Rules:
       if (aiMessage.includes('Round complete')) {
         if (round === 'hr') setRound('technical');
         else if (round === 'technical') setRound('project');
-        setQuestionCount(0);
       }
 
     } catch (error) {
@@ -130,6 +128,10 @@ Rules:
       e.preventDefault();
       sendAnswer();
     }
+  };
+
+  const endInterview = () => {
+    onComplete(messages);
   };
 
   return (
@@ -193,13 +195,21 @@ Rules:
                 rows={3}
                 disabled={loading}
               />
-              <button
-                className="send-btn"
-                onClick={sendAnswer}
-                disabled={loading}
-              >
-                {loading ? '...' : 'Send →'}
-              </button>
+              <div className="input-buttons">
+                <button
+                  className="send-btn"
+                  onClick={sendAnswer}
+                  disabled={loading}
+                >
+                  {loading ? '...' : 'Send →'}
+                </button>
+                <button
+                  className="end-btn"
+                  onClick={endInterview}
+                >
+                  End Interview
+                </button>
+              </div>
             </div>
           </div>
         )}
