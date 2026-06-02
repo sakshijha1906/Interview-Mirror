@@ -4,9 +4,11 @@ import DomainSelector from './DomainSelector';
 import ProjectInput from './ProjectInput';
 import InterviewEngine from './InterviewEngine';
 import FeedbackPage from './FeedbackPage';
+import LoginPage from './LoginPage';
 
 function App() {
-  const [page, setPage] = useState('home');
+  const [page, setPage] = useState('login');
+  const [user, setUser] = useState(null);
   const [selectedDomain, setSelectedDomain] = useState('');
   const [projectData, setProjectData] = useState(null);
   const [interviewMessages, setInterviewMessages] = useState([]);
@@ -18,6 +20,11 @@ function App() {
       setPage(target);
       setTransitioning(false);
     }, 400);
+  };
+
+  const handleLogin = (userData) => {
+    setUser(userData);
+    navigateTo('home');
   };
 
   const handleDomainSelect = (domain) => {
@@ -41,6 +48,14 @@ function App() {
     setInterviewMessages([]);
     navigateTo('home');
   };
+
+  if (page === 'login') {
+    return (
+      <div className={transitioning ? 'page-exit' : 'page-enter'}>
+        <LoginPage onLogin={handleLogin} />
+      </div>
+    );
+  }
 
   if (page === 'domain') {
     return (
@@ -83,7 +98,7 @@ function App() {
           domain={selectedDomain}
           projectData={projectData}
           onRestart={handleRestart}
-        />
+          user={user}       />
       </div>
     );
   }
@@ -93,7 +108,10 @@ function App() {
       <canvas id="particles-canvas"></canvas>
       <nav className="navbar">
         <h1 className="logo">Interview Mirror</h1>
-        <span className="nav-tag">// adaptive ai interviews</span>
+        <div className="navbar-right">
+          <span className="nav-user">// {user?.displayName}</span>
+          <span className="nav-tag">// adaptive ai interviews</span>
+        </div>
       </nav>
 
       <div className="hero">

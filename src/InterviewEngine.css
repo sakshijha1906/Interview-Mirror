@@ -280,3 +280,26 @@
   font-size: 13px;
   letter-spacing: 2px;
 }
+.input-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.end-btn {
+  background: transparent;
+  color: #ff4444;
+  border: 1px solid #ff4444;
+  padding: 16px 24px;
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.end-btn:hover {
+  background: rgba(255, 68, 68, 0.1);
+}

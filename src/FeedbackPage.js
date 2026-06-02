@@ -1,15 +1,36 @@
 import { useState, useEffect } from 'react';
 import './FeedbackPage.css';
+import { db } from './firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
-function FeedbackPage({ messages, domain, projectData, onRestart }) {
+function FeedbackPage({ messages, domain, projectData, onRestart, user }) {
   const [scores, setScores] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [saved, setSaved] = useState(false);
 
   const GROQ_API_KEY = process.env.REACT_APP_GROQ_API_KEY;
 
   useEffect(() => {
     analyzeFeedback();
   }, []);
+
+  const saveToFirebase = async (parsedScores) => {
+    try {
+      await addDoc(collection(db, 'interviews'), {
+        userId: user?.uid || 'anonymous',
+        userName: user?.displayName || 'anonymous',
+        domain: domain,
+        projectName: projectData.projectName,
+        techStack: projectData.techStack,
+        scores: parsedScores,
+        createdAt: new Date()
+      });
+      setSaved(true);
+      console.log('Interview saved to Firebase!');
+    } catch (error) {
+      console.error('Error saving:', error);
+    }
+  };
 
   const analyzeFeedback = async () => {
     const conversation = messages
@@ -57,10 +78,11 @@ function FeedbackPage({ messages, domain, projectData, onRestart }) {
       const content = data.choices[0].message.content;
       const parsed = JSON.parse(content);
       setScores(parsed);
+      await saveToFirebase(parsed);
 
     } catch (error) {
       console.error('Error:', error);
-      setScores({
+      const fallback = {
         hrScore: 70,
         technicalScore: 60,
         projectScore: 65,
@@ -69,7 +91,9 @@ function FeedbackPage({ messages, domain, projectData, onRestart }) {
         weakAreas: ["Technical concepts"],
         strengths: ["Communication"],
         suggestions: ["Practice more technical questions"]
-      });
+      };
+      setScores(fallback);
+      await saveToFirebase(fallback);
     }
     setLoading(false);
   };
@@ -90,7 +114,10 @@ function FeedbackPage({ messages, domain, projectData, onRestart }) {
 
       <div className="feedback-navbar">
         <h1 className="logo">Interview Mirror</h1>
-        <span className="feedback-nav-tag">// performance report</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {saved && <span style={{ color: '#00ff88', fontSize: '11px', letterSpacing: '2px', fontFamily: 'Courier New' }}>// saved ✓</span>}
+          <span className="feedback-nav-tag">// performance report</span>
+        </div>
       </div>
 
       <div className="feedback-body">

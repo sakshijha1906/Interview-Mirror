@@ -1,0 +1,95 @@
+.login-page {
+  min-height: 100vh;
+  background: #080808;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  border: 1px solid #1a1a1a;
+  padding: 60px 48px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-box h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.login-box h1 span {
+  color: #00ff88;
+  text-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
+}
+
+.login-subtitle {
+  font-size: 14px;
+  color: #555;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+/* GOOGLE BUTTON */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  background: transparent;
+  color: #e0e0e0;
+  border: 1px solid #333;
+  padding: 16px 32px;
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 24px;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.google-btn:hover {
+  border-color: #00ff88;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.1);
+}
+
+.login-note {
+  font-size: 11px;
+  color: #333;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+}
+
+/* TERMINAL LINE */
+.terminal-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.terminal-prompt {
+  color: #00ff88;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+}
+
+.terminal-text {
+  color: #333;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}

@@ -52,20 +52,18 @@ body {
   z-index: 1;
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: 700;
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-user {
+  font-size: 12px;
   color: #00ff88;
   letter-spacing: 2px;
-  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
 }
-
-.nav-tag {
-  font-size: 12px;
-  color: #333;
-  letter-spacing: 2px;
-}
-
 /* TERMINAL LINE */
 .terminal-line {
   display: flex;
