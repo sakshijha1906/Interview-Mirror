@@ -128,7 +128,7 @@ function FeedbackPage({ messages, domain, projectData, onRestart, user }) {
             <span className="terminal-text"> generating report...</span>
           </div>
           <h1>Your Interview <span>Report</span></h1>
-          <p>Domain: <span className="highlight">{domain}</span> | Project: <span className="highlight">{projectData.projectName}</span></p>
+          <p>Domain: <span className="highlight">{domain}</span> | Project: <span className="highlight">{projectData?.projectName}</span></p>
         </div>
 
         <div className="verdict-section">

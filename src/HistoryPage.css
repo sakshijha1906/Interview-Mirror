@@ -1,0 +1,372 @@
+.history-page {
+  min-height: 100vh;
+  background: #080808;
+}
+
+.history-loading {
+  min-height: 100vh;
+  background: #080808;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+}
+
+/* NAVBAR */
+.history-navbar {
+  padding: 24px 48px;
+  border-bottom: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.history-nav-tag {
+  font-size: 12px;
+  color: #333;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+/* BODY */
+.history-body {
+  padding: 60px 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.history-header {
+  margin-bottom: 48px;
+}
+
+.history-header h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+.history-header h1 span {
+  color: #00ff88;
+  text-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
+}
+
+.history-header p {
+  font-size: 12px;
+  color: #333;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+}
+
+/* INTERVIEWS LIST */
+.interviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: #1a1a1a;
+  border: 1px solid #1a1a1a;
+}
+
+.interview-row {
+  background: #080808;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.interview-row:hover {
+  background: #0f0f0f;
+}
+
+.interview-row-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.interview-domain {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.interview-project {
+  font-size: 12px;
+  color: #444;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+}
+
+.interview-row-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.mini-verdict {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border: 1px solid;
+}
+
+.interview-score {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+}
+
+.interview-date {
+  font-size: 12px;
+  color: #444;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+}
+
+/* NO INTERVIEWS */
+.no-interviews {
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.no-interviews p {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #333;
+  letter-spacing: 2px;
+}
+
+/* DETAIL VIEW */
+.detail-header {
+  margin-bottom: 48px;
+}
+
+.detail-header h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+.detail-header h1 span {
+  color: #00ff88;
+}
+
+.detail-header p {
+  font-size: 14px;
+  color: #555;
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 8px;
+}
+
+.detail-date {
+  font-size: 12px;
+  color: #333;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+}
+
+.highlight {
+  color: #00ff88;
+  font-family: 'Courier New', monospace;
+}
+
+/* VERDICT */
+.verdict-section {
+  text-align: center;
+  padding: 48px;
+  border: 1px solid #1a1a1a;
+  margin-bottom: 32px;
+}
+
+.verdict {
+  font-size: 12px;
+  letter-spacing: 4px;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  padding: 8px 24px;
+  border: 1px solid;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.verdict-selected {
+  color: #00ff88;
+  border-color: #00ff88;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.verdict-practice {
+  color: #ffaa00;
+  border-color: #ffaa00;
+  box-shadow: 0 0 20px rgba(255, 170, 0, 0.2);
+}
+
+.verdict-improve {
+  color: #ff4444;
+  border-color: #ff4444;
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.2);
+}
+
+.overall-score {
+  font-size: 80px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.overall-score span {
+  font-size: 24px;
+  color: #333;
+}
+
+/* SCORES GRID */
+.scores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  margin-bottom: 32px;
+}
+
+.score-card {
+  background: #080808;
+  padding: 32px;
+}
+
+.score-label {
+  display: block;
+  font-size: 11px;
+  color: #00ff88;
+  letter-spacing: 3px;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 12px;
+}
+
+.score-card h3 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 16px;
+}
+
+.score-bar {
+  height: 2px;
+  background: #1a1a1a;
+  width: 100%;
+}
+
+.score-fill {
+  height: 100%;
+  background: #00ff88;
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+}
+
+/* FEEDBACK DETAILS */
+.feedback-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  margin-bottom: 32px;
+}
+
+.detail-section {
+  background: #080808;
+  padding: 32px;
+}
+
+.detail-section h3 {
+  font-size: 11px;
+  color: #00ff88;
+  letter-spacing: 3px;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  margin: 4px 4px 4px 0;
+  letter-spacing: 1px;
+}
+
+.tag-weak {
+  color: #ff4444;
+  border: 1px solid #ff4444;
+}
+
+.tag-strong {
+  color: #00ff88;
+  border: 1px solid #00ff88;
+}
+
+.suggestion {
+  font-size: 13px;
+  color: #666;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  background: transparent;
+  color: #444;
+  border: none;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: color 0.3s;
+  text-transform: uppercase;
+}
+
+.back-btn:hover {
+  color: #00ff88;
+}
+
+/* TERMINAL LINE */
+.terminal-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.terminal-prompt {
+  color: #00ff88;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+}
+
+.terminal-text {
+  color: #333;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}

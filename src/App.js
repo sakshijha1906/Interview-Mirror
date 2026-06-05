@@ -5,6 +5,7 @@ import ProjectInput from './ProjectInput';
 import InterviewEngine from './InterviewEngine';
 import FeedbackPage from './FeedbackPage';
 import LoginPage from './LoginPage';
+import HistoryPage from './HistoryPage';
 
 function App() {
   const [page, setPage] = useState('login');
@@ -47,6 +48,11 @@ function App() {
     setProjectData(null);
     setInterviewMessages([]);
     navigateTo('home');
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    navigateTo('login');
   };
 
   if (page === 'login') {
@@ -98,7 +104,19 @@ function App() {
           domain={selectedDomain}
           projectData={projectData}
           onRestart={handleRestart}
-          user={user}       />
+          user={user}
+        />
+      </div>
+    );
+  }
+
+  if (page === 'history') {
+    return (
+      <div className={transitioning ? 'page-exit' : 'page-enter'}>
+        <HistoryPage
+          user={user}
+          onBack={() => navigateTo('home')}
+        />
       </div>
     );
   }
@@ -110,7 +128,8 @@ function App() {
         <h1 className="logo">Interview Mirror</h1>
         <div className="navbar-right">
           <span className="nav-user">// {user?.displayName}</span>
-          <span className="nav-tag">// adaptive ai interviews</span>
+          <button className="nav-btn" onClick={() => navigateTo('history')}>History</button>
+          <button className="nav-btn logout" onClick={handleLogout}>Logout</button>
         </div>
       </nav>
 

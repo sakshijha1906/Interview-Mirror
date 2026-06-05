@@ -64,6 +64,35 @@ body {
   letter-spacing: 2px;
   font-family: 'Courier New', monospace;
 }
+
+.nav-btn {
+  background: transparent;
+  color: #444;
+  border: 1px solid #222;
+  padding: 8px 16px;
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.nav-btn:hover {
+  color: #00ff88;
+  border-color: #00ff88;
+}
+
+.nav-btn.logout:hover {
+  color: #ff4444;
+  border-color: #ff4444;
+}
+.nav-user {
+  font-size: 12px;
+  color: #00ff88;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
 /* TERMINAL LINE */
 .terminal-line {
   display: flex;
