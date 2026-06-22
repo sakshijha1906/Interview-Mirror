@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Interview Mirror
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An AI-powered mock interview simulator built to make interview preparation more personalized, adaptive, and interactive.
 
-## Available Scripts
+## Live Demo
+https://interview-mirror-84672.web.app
 
-In the project directory, you can run:
+## About The Project
 
-### `npm start`
+Interview Mirror is a personal project built while pursuing BE Information Technology to explore how AI can improve the interview preparation experience.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Instead of relying on static question lists, the application generates interview questions based on the user's domain and project details, adapts difficulty based on answer quality, and provides AI-powered feedback to help identify areas for improvement.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The goal was not just to integrate AI into an application, but to build something practical that simulates a realistic interview experience.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Personalized interview question generation based on domain and project
+- Multi-round interview simulation (HR, Technical, Project rounds)
+- Adaptive difficulty that adjusts based on answer quality
+- AI-powered feedback with scores and weak area detection
+- Interview history tracking with past session details
+- Google Authentication for secure login
+- Interactive terminal-style user interface
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Category | Technologies |
+| -------------- | ------------ |
+| Frontend | React.js |
+| Database | Firebase Firestore |
+| Authentication | Firebase Auth |
+| AI Integration | Groq API (LLaMA 3.3 70B) |
+| Hosting | Firebase Hosting |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## How It Works
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. User logs in with Google account
+2. Selects interview domain (Web Dev, AI/ML, Core CS etc.)
+3. Enters project name, tech stack and description
+4. AI conducts multi-round interview (HR, Technical, Project)
+5. System adapts questions based on answer quality
+6. AI analyzes responses and generates detailed feedback
+7. Scores, weak areas and suggestions are saved to history
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Clone the repository
+```bash
+git clone https://github.com/sakshijha1906/Interview-Mirror.git
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Navigate to the project folder
+```bash
+cd Interview-Mirror
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Install dependencies
+```bash
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Add environment variables
+Create a `.env` file in root folder:
